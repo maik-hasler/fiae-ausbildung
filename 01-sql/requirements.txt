@@ -1,0 +1,4 @@
+# Jupyter-Kernel für VS Code
+ipykernel>=6.29,<8
+# SQL direkt in Notebook-Zellen (%sql / %%sql)
+jupysql>=0.11,<0.12

@@ -1,0 +1,2 @@
+# Binärdateien nie umwandeln (Zeilenenden würden PDFs beschädigen)
+*.pdf binary

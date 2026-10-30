@@ -1,0 +1,19 @@
+# Jupyter-Kernel für VS Code
+ipykernel>=6.29,<8
+
+# LLM und Embeddings über Ollama
+langchain>=1.2,<2
+langchain-ollama>=1.0,<2
+
+# Dokumente laden und in Chunks aufteilen
+langchain-community>=0.4,<0.5
+langchain-text-splitters>=1.1,<2
+pypdf>=6,<7
+beautifulsoup4>=4.12,<5
+
+# Vektordatenbank
+langchain-qdrant>=1.1,<2
+qdrant-client>=1.15,<2
+
+# Weboberfläche (Projekt 1, Phase 6)
+streamlit>=1.40,<2
