@@ -22,6 +22,12 @@
 - Für das Cloud-Modell braucht jede Person ein Ollama-Konto. Klärt vorab, ob private Konten genutzt werden sollen oder ein gemeinsames.
 - Das LLM-Wiki ist als **Fortgeschritten** markiert und eignet sich eher ab dem 2. Ausbildungsjahr.
 
+## Links pflegen
+
+- Externe Links sind bewusst sparsam: Das Wichtigste steht im eigenen Glossar `01-sql/0-einstieg/grundlagen.md`. Verlinkt sind vor allem Werkzeug-Dokumentationen (SQLite, Mermaid, Bibliotheken im KI-Teil) und einzelne Wikipedia-Artikel.
+- Der GitHub-Workflow **Links prüfen** (`.github/workflows/links.yml`) testet einmal im Monat, ob alle Links erreichbar sind. Schlägt er fehl, schickt GitHub eine Benachrichtigung. Von Hand starten geht unter *Actions → Links prüfen → Run workflow*. Platzhalter wie `localhost` stehen in `.lycheeignore`.
+- Ob sich der **Inhalt** einer verlinkten Seite geändert hat, erkennt der Check nicht. Schaut die Links deshalb vor jedem neuen Ausbildungsjahrgang einmal selbst an.
+
 ## Neue Aufgaben ergänzen
 
 Im selben Stil: `Anforderungen.md` mit User Story, Niveau, Dauer, Phasen mit „Fertig, wenn …“ und ein Notebook mit vorgegebenen Imports, Gerüsten und `TODO`-Markierungen. Fachbegriffe ins Glossar in `02-ki/README.md` bzw. nach `01-sql/0-einstieg/grundlagen.md`.
