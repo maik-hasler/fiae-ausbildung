@@ -1,7 +1,6 @@
 # KI-Projekt 1: Euer eigenes RAG
 
 **Niveau:** Einstieg  
-**Dauer:** etwa 4–5 Tage  
 **Voraussetzung:** [Setup im Hauptordner](../../README.md#setup) inklusive Ollama
 
 ## User Story
