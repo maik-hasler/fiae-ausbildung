@@ -56,9 +56,31 @@ Die **Kardinalität** sagt, wie viele Objekte an einer Beziehung beteiligt sind:
 
 Dazu kommt, ob eine Beziehung **optional** ist: Muss ein Autor mindestens ein Buch haben, oder darf er auch keins haben?
 
+## Notationen für ER-Diagramme
+
+Dasselbe Modell lässt sich unterschiedlich zeichnen. In der Abschlussprüfung kommen mehrere Schreibweisen vor. Beispiel: Ein Autor schreibt beliebig viele Bücher (auch keins), jedes Buch hat genau einen Autor.
+
+| Notation | So sieht es aus | Wo steht die Angabe für „viele Bücher“? |
+|----------|-----------------|------------------------------------------|
+| **Chen** | Rechteck = Entität, Raute = Beziehung, Ellipse = Attribut. An die Linien schreibt man `1`, `n` oder `m`: `Autor —1— ◇schreibt◇ —n— Buch` | beim **Buch** |
+| **(min,max)** | wie Chen, aber mit Zahlenpaaren: `Autor —(0,n)— ◇schreibt◇ —(1,1)— Buch` | beim **Autor**: „Ein Autor nimmt 0- bis n-mal an *schreibt* teil.“ |
+| **Krähenfuß** (wie Mermaid) | `AUTOR \|\|--o{ BUCH`: der „Krähenfuß“ `{` bedeutet viele | beim **Buch** |
+
+Achtung, Falle: Bei der (min,max)-Notation steht die Angabe auf der **anderen** Seite als bei Chen und Krähenfuß. Sie sagt, wie oft **diese** Entität an der Beziehung teilnimmt.
+
 ## Normalisierung
 
-Normalisierung vermeidet, dass Daten doppelt gespeichert werden. Doppelte Daten führen zu Widersprüchen, wenn man sie nur an einer Stelle ändert.
+Normalisierung vermeidet, dass Daten doppelt gespeichert werden. Doppelte Daten (**Redundanz**) führen zu Widersprüchen (**Inkonsistenz**), wenn man sie nur an einer Stelle ändert. Wie sich das anfühlt, erlebt ihr in [Teil 1](../1-normalisierung/Anforderungen.md).
+
+**Anomalien** sind die typischen Probleme einer nicht normalisierten Tabelle:
+
+| Anomalie | Problem | Beispiel aus Teil 1 |
+|----------|---------|---------------------|
+| **Änderungsanomalie** | Eine Information steht mehrfach. Wird nicht jede Stelle geändert, widersprechen sich die Daten. | Gildenbeschreibung nur in einer von sechs Zeilen geändert |
+| **Einfügeanomalie** | Etwas lässt sich nicht speichern, weil eine andere Information fehlt. | Gilde ohne Mitglied kann nicht angelegt werden |
+| **Löschanomalie** | Beim Löschen geht ungewollt weitere Information verloren. | letzte Mitgliedschaft gelöscht, damit ist auch die Gilde weg |
+
+**Funktionale Abhängigkeit:** B hängt funktional von A ab (A → B), wenn zu jedem Wert von A genau ein Wert von B gehört. Beispiel: `autor_id → autor_name`.
 
 **1. Normalform:** Jede Zelle enthält genau einen Wert.
 
@@ -66,15 +88,19 @@ Normalisierung vermeidet, dass Daten doppelt gespeichert werden. Doppelte Daten 
 |-----------|-----------|
 | `schlagwoerter = 'Krimi, Küste, Nebel'` | eigene Tabelle `buch_schlagwort` mit einer Zeile pro Schlagwort |
 
-**2. Normalform:** 1. Normalform, und bei einem zusammengesetzten Schlüssel hängt jede Spalte vom **ganzen** Schlüssel ab.
+**2. Normalform:** 1. Normalform, und jede Nicht-Schlüssel-Spalte hängt vom **ganzen** Schlüssel ab, nicht nur von einem Teil davon. Das betrifft jeden Schlüssel aus mehreren Spalten, auch wenn die Tabelle zusätzlich eine `id` hat.
 
 > In `buch_schlagwort (buch_id, schlagwort_id, buchtitel)` hängt `buchtitel` nur von `buch_id` ab. Der Titel gehört in die Tabelle `buch`.
 
-**3. Normalform:** 2. Normalform, und keine Spalte hängt von einer anderen Spalte ab, die kein Schlüssel ist.
+**3. Normalform:** 2. Normalform, und keine Nicht-Schlüssel-Spalte hängt von einer anderen Nicht-Schlüssel-Spalte ab.
 
 > In `buch (id, titel, autor_id, autor_name)` hängt `autor_name` von `autor_id` ab, nicht vom Buch. Der Name gehört in die Tabelle `autor`.
 
-Faustregel: **Jede Information steht an genau einer Stelle.**
+Faustregel: **Jede Information steht an genau einer Stelle.** Oder als Merksatz: Jede Nicht-Schlüssel-Spalte hängt ab vom Schlüssel (1NF), vom ganzen Schlüssel (2NF) und von nichts anderem als dem Schlüssel (3NF).
+
+**Schlüsselarten:** Ein **natürlicher Schlüssel** besteht aus fachlichen Daten, z. B. ein Benutzername. Ein **Surrogatschlüssel** (künstlicher Schlüssel) wie `id` hat keine fachliche Bedeutung und muss sich deshalb nie ändern.
+
+**Denormalisierung:** bewusst redundant speichern, z. B. für schnellere Abfragen. Das macht man nur mit gutem Grund und mit einem Plan, wie die Kopie aktuell bleibt.
 
 ## SQL auf einen Blick
 
@@ -99,6 +125,51 @@ HAVING    bedingung für Gruppen
 ORDER BY  spalten
 LIMIT     anzahl;
 ```
+
+Die SQL-Befehle teilt man in Gruppen ein:
+
+| Gruppe | Wofür | Befehle |
+|--------|-------|---------|
+| **DDL** (Data Definition Language) | Struktur anlegen und ändern | `CREATE`, `ALTER`, `DROP` |
+| **DML** (Data Manipulation Language) | Daten ändern | `INSERT`, `UPDATE`, `DELETE` |
+| **DQL** (Data Query Language) | Daten abfragen | `SELECT` (manche Bücher zählen es zur DML) |
+| **DCL** (Data Control Language) | Rechte vergeben | `GRANT`, `REVOKE` (nicht in SQLite) |
+| **TCL** (Transaction Control Language) | Transaktionen steuern | `BEGIN`, `COMMIT`, `ROLLBACK` |
+
+## Tabellen verbinden
+
+| Begriff | Bedeutung |
+|---------|-----------|
+| **Kartesisches Produkt** | Jede Zeile der einen Tabelle kombiniert mit jeder Zeile der anderen. 8 Bücher × 4 Autoren = 32 Zeilen. Entsteht bei `FROM a, b` ohne Bedingung oder absichtlich mit `CROSS JOIN`. |
+| **`JOIN ... ON`** (INNER JOIN) | Nur die Kombinationen, die die Bedingung erfüllen. Man kann es sich als gefiltertes kartesisches Produkt vorstellen. |
+| **`LEFT JOIN`** | Alle Zeilen der linken Tabelle, auch ohne Partner. Fehlende Werte rechts sind `NULL`. |
+| **Fan-out** | Ein Join liefert mehrere Zeilen pro Objekt, z. B. eine Zeile pro Wert eines Charakters. `SUM` und `COUNT` zählen dann mehrfach. |
+| **`EXISTS`** | Prüft nur, **ob** es einen Partner gibt, und vervielfacht keine Zeilen. |
+| **`UNION` / `UNION ALL`** | Hängt Ergebnisse **untereinander**. `UNION` entfernt doppelte Zeilen, `UNION ALL` nicht. |
+
+## Werkzeuge für den Betrieb
+
+Ausprobiert in [Teil 4](../4-live-betrieb/Anforderungen.md).
+
+| Werkzeug | Was es ist | Wann man es braucht |
+|----------|-----------|---------------------|
+| **Index** | sortiertes Verzeichnis zu einer oder mehreren Spalten, wie das Register eines Buchs | Spalten, nach denen oft gesucht, gefiltert, verbunden oder sortiert wird. Macht Lesen schneller, Schreiben langsamer und braucht Platz. |
+| **Partieller Index** | Index nur über die Zeilen, die eine Bedingung erfüllen | z. B. „höchstens ein Guildwarden pro Gilde“ mit `CREATE UNIQUE INDEX ... WHERE role_id = 1` |
+| **View** | gespeicherte Abfrage, die man wie eine Tabelle benutzt. Speichert keine eigenen Daten. | Spalten verbergen, komplizierte Joins verstecken |
+| **Trigger** | SQL, das die Datenbank bei `INSERT`, `UPDATE` oder `DELETE` automatisch ausführt | Protokolle, Regeln über mehrere Zeilen oder Tabellen. Sparsam einsetzen, weil unsichtbar. |
+| **Transaktion** | mehrere Anweisungen, die nur gemeinsam gelten: `BEGIN` … `COMMIT` oder `ROLLBACK` | Wenn ein halber Vorgang Schaden anrichtet, z. B. eine Überweisung |
+| **Stored Procedure** | Programmlogik, die in der Datenbank gespeichert ist und dort läuft | Nicht in SQLite, aber z. B. in PostgreSQL und SQL Server |
+
+**ACID** sind die vier Garantien einer Transaktion:
+
+| | Bedeutung |
+|---|---|
+| **A**tomicity | alles oder nichts |
+| **C**onsistency | vorher und nachher sind die Daten stimmig, alle Regeln gelten |
+| **I**solation | gleichzeitige Transaktionen stören sich nicht |
+| **D**urability | nach `COMMIT` dauerhaft gespeichert, auch bei Absturz |
+
+**SQL-Injection:** Eingaben werden als SQL-Code ausgeführt, weil sie direkt in den SQL-Text geklebt wurden. Schutz: immer **parametrisierte Abfragen** (Platzhalter `?`), nie Text zusammenbauen.
 
 ## Jupyter-Notebooks mit SQL
 

@@ -1,6 +1,6 @@
 # Referenz: Musterlösung der MMO-Datenbank
 
-> **Stopp!** Erst öffnen, wenn euer eigener Entwurf aus [Teil 1](../1-datenbank-entwerfen/Anforderungen.md) fertig ist und ihr ihn vorgestellt habt.
+> **Stopp!** Erst öffnen, wenn euer eigener Entwurf aus [Teil 2](../2-datenbank-entwerfen/Anforderungen.md) fertig ist und ihr ihn vorgestellt habt.
 
 Diese Lösung ist **eine** mögliche Umsetzung der Anforderungen, aber nicht die einzig richtige. Vergleicht sie mit eurem Modell und überlegt bei jedem Unterschied, welche Variante besser zu den Anforderungen passt.
 
@@ -8,11 +8,11 @@ Diese Lösung ist **eine** mögliche Umsetzung der Anforderungen, aber nicht die
 
 | Datei | Beschreibung |
 |-------|--------------|
-| `setup.sql` | Legt alle Tabellen an und füllt sie mit Testdaten: 5.000 Accounts, 15.000 Charaktere, 6 Gilden. Wird in [Teil 2](../2-abfragen/abfragen.ipynb) als Variante B geladen. |
+| `setup.sql` | Legt alle Tabellen an und füllt sie mit Testdaten: 5.000 Accounts, 15.000 Charaktere, 6 Gilden. Wird in [Teil 3](../3-abfragen/abfragen.ipynb), Teil 4 und Teil 5 geladen. |
 
 Hinweise zu `setup.sql`:
 
-- Die Daten sehen zufällig aus, sind aber **bei jedem Ausführen gleich**. Deshalb passen die Kontrollwerte in Teil 2.
+- Die Daten sehen zufällig aus, sind aber **bei jedem Ausführen gleich**. Deshalb passen die Kontrollwerte in Teil 3.
 - Das Skript ist für eine **frische, leere** Datenbank gedacht.
 - `password_hash` enthält nur einen Platzhalter, keinen echten Hash.
 

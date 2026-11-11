@@ -6,10 +6,10 @@ Vorher das [Setup im Hauptordner](../README.md#setup) erledigen, inklusive des A
 
 ## Projekte
 
-| # | Projekt | Inhalt | Niveau | Dauer |
-|---|---------|--------|--------|-------|
-| 1 | [Eigenes RAG](projekt-1-rag/Anforderungen.md) | Eigene Dokumente sammeln (selbst erstellte PDFs, Internet-Quellen), für das LLM nutzbar machen und Fragen dazu beantworten lassen | Einstieg | 4–5 Tage |
-| 2 | [LLM-Wiki](projekt-2-llm-wiki/Anforderungen.md) | Dem LLM ein eigenes Gedächtnis aus Markdown-Seiten bauen, das es selbst pflegt und durchsucht | Fortgeschritten | 4–5 Tage |
+| # | Projekt | Inhalt | Niveau |
+|---|---------|--------|--------|
+| 1 | [Eigenes RAG](projekt-1-rag/Anforderungen.md) | Eigene Dokumente sammeln (selbst erstellte PDFs, Internet-Quellen), für das LLM nutzbar machen und Fragen dazu beantworten lassen | Einstieg |
+| 2 | [LLM-Wiki](projekt-2-llm-wiki/Anforderungen.md) | Dem LLM ein eigenes Gedächtnis aus Markdown-Seiten bauen, das es selbst pflegt und durchsucht | Fortgeschritten |
 
 Projekt 2 baut auf Projekt 1 auf.
 

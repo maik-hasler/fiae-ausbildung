@@ -4,15 +4,18 @@ Praktische Aufgaben für die IT-Ausbildung: Datenbanken mit SQL und KI mit Large
 
 ## Lernpfad
 
-| Bereich | Aufgabe | Niveau | Dauer |
-|---------|---------|--------|-------|
-| [SQL](01-sql/README.md) | 0. Einstieg: SQL-Grundlagen an einer Bücherei-Datenbank | Einstieg | 1 Tag |
-| | 1. Datenbank für ein Online-Rollenspiel **selbst entwerfen** und mit eigenen Daten füllen | Einstieg | 3 Tage |
-| | 2. 20 SQL-Abfragen auf der eigenen Datenbank und der Referenz | Einstieg bis mittel | 2 Tage |
-| [KI](02-ki/README.md) | 1. Eigenes RAG: selbst gewählte Dokumente für ein LLM nutzbar machen | Einstieg | 4–5 Tage |
-| | 2. LLM-Wiki: dem LLM ein eigenes Gedächtnis bauen | Fortgeschritten | 4–5 Tage |
+| Bereich | Aufgabe | Niveau |
+|---------|---------|--------|
+| [SQL](01-sql/README.md) | 0. Einstieg: SQL-Grundlagen an einer Bücherei-Datenbank, kartesisches Produkt | Einstieg |
+| | 1. Anomalien und Normalformen: eine Excel-artige Gildenliste **erst kaputt machen, dann normalisieren** | Einstieg |
+| | 2. Datenbank für ein Online-Rollenspiel **selbst entwerfen**, einen Ausschnitt anlegen und testen | Einstieg |
+| | 3. 26 SQL-Abfragen auf der Referenzdatenbank, inklusive typischer Fallen | Einstieg bis mittel |
+| | 4. Live-Betrieb: acht Tickets zu Index, Transaktion, View, Trigger, SQL-Injection, DSGVO und Backup | Mittel |
+| | 5. Eigene Erweiterung: selbst gewähltes Feature bis zur Migration der laufenden Datenbank | Fortgeschritten |
+| [KI](02-ki/README.md) | 1. Eigenes RAG: selbst gewählte Dokumente für ein LLM nutzbar machen | Einstieg |
+| | 2. LLM-Wiki: dem LLM ein eigenes Gedächtnis bauen | Fortgeschritten |
 
-Die Bereiche SQL und KI sind unabhängig voneinander. Innerhalb eines Bereichs bauen die Aufgaben aufeinander auf. Die Zeitangaben sind Richtwerte.
+Die Bereiche SQL und KI sind unabhängig voneinander. Innerhalb eines Bereichs bauen die Aufgaben aufeinander auf.
 
 ## Struktur
 
@@ -20,8 +23,11 @@ Die Bereiche SQL und KI sind unabhängig voneinander. Innerhalb eines Bereichs b
 ausbildung-uebungen/
 ├── 01-sql/
 │   ├── 0-einstieg/              # SQL-Grundlagen mit Kontrollergebnissen
-│   ├── 1-datenbank-entwerfen/   # Anforderungen → ER-Modell → Tabellen → eigene Daten
-│   ├── 2-abfragen/              # 20 Abfragen von leicht bis knifflig
+│   ├── 1-normalisierung/        # Anomalien erleben → Normalformen
+│   ├── 2-datenbank-entwerfen/   # Anforderungen → ER-Modell → Tabellen → eigene Daten
+│   ├── 3-abfragen/              # 26 Abfragen von leicht bis knifflig
+│   ├── 4-live-betrieb/          # Tickets: Index, Transaktion, View, Trigger, Injection, DSGVO, Backup
+│   ├── 5-erweiterung/           # eigenes Feature, Migration, Review
 │   └── referenz/                # Musterlösung des Datenmodells + Testdaten
 └── 02-ki/
     ├── projekt-1-rag/           # Eigenes RAG mit selbst gewählten Quellen

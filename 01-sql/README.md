@@ -6,12 +6,17 @@ Vorher das [Setup im Hauptordner](../README.md#setup) erledigen.
 
 ## Lernpfad
 
-| # | Was | Inhalt | Dauer |
-|---|-----|--------|-------|
-| 0 | [Einstieg](0-einstieg/einstieg.ipynb) | SQL-Grundlagen an einer kleinen Bücherei-Datenbank, mit Kontrollergebnissen. Begriffe in [grundlagen.md](0-einstieg/grundlagen.md). | 1 Tag |
-| 1 | [Datenbank entwerfen](1-datenbank-entwerfen/Anforderungen.md) | Aus fachlichen Anforderungen ein ER-Modell entwerfen, Tabellen anlegen, eigene Testdaten einfügen | 3 Tage |
-| 2 | [Abfragen](2-abfragen/abfragen.ipynb) | 20 Aufgaben von leicht bis knifflig, auf der eigenen Datenbank und der Referenz | 2 Tage |
-| | [Referenz](referenz/README.md) | Musterlösung des Datenmodells und Skript mit vielen Testdaten. **Erst nach Teil 1 öffnen.** | |
+| # | Was | Inhalt |
+|---|-----|--------|
+| 0 | [Einstieg](0-einstieg/einstieg.ipynb) | SQL-Grundlagen an einer kleinen Bücherei-Datenbank, mit Kontrollergebnissen. Dabei: das kartesische Produkt selbst entdecken. Begriffe in [grundlagen.md](0-einstieg/grundlagen.md). |
+| 1 | [Anomalien und Normalformen](1-normalisierung/Anforderungen.md) | Eine Excel-artige Gildenliste bearbeiten, an Anomalien scheitern, dann selbst normalisieren |
+| 2 | [Datenbank entwerfen](2-datenbank-entwerfen/Anforderungen.md) | Aus fachlichen Anforderungen das ganze ER-Modell entwerfen, einen Ausschnitt mit allen Beziehungsarten und Constraints anlegen und testen |
+| 3 | [Abfragen](3-abfragen/abfragen.ipynb) | 26 Aufgaben von leicht bis knifflig auf der Referenzdatenbank. Am Ende typische Fallen (vergessene Join-Bedingung, Fan-out) sowie `CASE`, `UNION` und `EXISTS`. |
+| 4 | [Live-Betrieb](4-live-betrieb/Anforderungen.md) | Acht Tickets aus dem laufenden Spiel: Index, Eindeutigkeit, Transaktion, View und Rechte, Trigger, SQL-Injection, DSGVO-Löschung, Backup |
+| 5 | [Eigene Erweiterung](5-erweiterung/Anforderungen.md) | Selbst gewähltes Feature von der Idee bis zur Migration der laufenden Datenbank, mit Review |
+| | [Referenz](referenz/README.md) | Musterlösung des Datenmodells und Skript mit vielen Testdaten. **Erst nach Teil 2 öffnen.** |
+
+Das Prinzip in allen Teilen: **erst das Problem erleben, dann das Werkzeug kennenlernen.** Die Fachbegriffe kommen, nachdem man gesehen hat, wofür man sie braucht.
 
 ## Werkzeuge
 

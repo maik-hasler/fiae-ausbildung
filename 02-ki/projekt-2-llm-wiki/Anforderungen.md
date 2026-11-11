@@ -1,7 +1,6 @@
 # KI-Projekt 2: Ein eigenes Mini-Gedächtnis (LLM-Wiki)
 
 **Niveau:** Fortgeschritten  
-**Dauer:** etwa 4–5 Tage  
 **Voraussetzung:** [Projekt 1](../projekt-1-rag/Anforderungen.md) abgeschlossen, sicherer Umgang mit Python-Funktionen, Listen und Klassen
 
 ## User Story
