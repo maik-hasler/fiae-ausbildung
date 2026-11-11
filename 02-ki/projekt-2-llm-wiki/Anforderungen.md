@@ -152,7 +152,7 @@ Wie in Projekt 1. Zusätzliche Pakete braucht ihr nicht.
 |-------|------|
 | LLM Wiki von Andrej Karpathy (Englisch) | https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f |
 | Strukturierte Ausgabe mit LangChain (Englisch) | https://docs.langchain.com/oss/python/langchain/structured-output |
-| Pydantic (Englisch) | https://docs.pydantic.dev/latest/ |
+| Pydantic (Englisch) | https://pydantic.dev/docs/validation/latest/get-started/ |
 | Python `pathlib` | https://docs.python.org/3/library/pathlib.html |
 | Obsidian (Wiki mit klickbaren Links ansehen) | https://obsidian.md |
 

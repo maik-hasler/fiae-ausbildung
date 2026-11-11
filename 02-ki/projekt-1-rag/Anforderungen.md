@@ -167,10 +167,10 @@ Streamlit läuft **nicht im Notebook**, sondern als eigenes Python-Programm. Ein
 
 | Thema | Link |
 |-------|------|
-| LangChain RAG Tutorial (Englisch) | https://docs.langchain.com/oss/python/langchain/rag |
+| LangChain: PDF laden, aufteilen, einbetten und durchsuchen, mit kleinem RAG-Beispiel (Englisch) | https://docs.langchain.com/oss/python/langchain/knowledge-base |
 | Embedding-Modell | https://ollama.com/library/embeddinggemma:300m |
 | LLM | https://ollama.com/library/gpt-oss:20b-cloud |
-| LangChain Ollama Integration (Englisch) | https://reference.langchain.com/python/integrations/langchain_ollama/ |
+| LangChain Ollama Integration (Englisch) | https://reference.langchain.com/python/langchain-ollama |
 | Streamlit Chat (Englisch) | https://docs.streamlit.io/develop/api-reference/chat |
 
 ---

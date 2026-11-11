@@ -1,0 +1,26 @@
+# Prüft einmal im Monat, ob alle Links in den Markdown-Dateien noch erreichbar sind.
+# Ob sich der Inhalt einer Seite geändert hat, kann der Check nicht erkennen.
+# Dafür die Links vor jedem neuen Ausbildungsjahrgang einmal selbst ansehen.
+name: Links prüfen
+
+on:
+  schedule:
+    - cron: "0 6 1 * *"   # am 1. jedes Monats um 6 Uhr (UTC)
+  workflow_dispatch:      # zusätzlich jederzeit von Hand startbar (Actions → Links prüfen → Run workflow)
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Links prüfen
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --max-retries 3 --accept 200,429 './**/*.md'
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

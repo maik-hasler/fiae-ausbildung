@@ -1,0 +1,5 @@
+# Links, die der monatliche Link-Check überspringt (reguläre Ausdrücke, einer pro Zeile)
+
+# Platzhalter und lokale Adressen in Beispielen
+^https?://localhost
+^https?://\.\.\.

@@ -184,7 +184,6 @@ Ausprobiert in [Teil 4](../4-live-betrieb/Anforderungen.md).
 
 | Thema | Link |
 |-------|------|
-| SQL interaktiv üben (Englisch) | https://sqlbolt.com |
 | Normalisierung (Wikipedia) | https://de.wikipedia.org/wiki/Normalisierung_%28Datenbank%29 |
 | Entity-Relationship-Modell (Wikipedia) | https://de.wikipedia.org/wiki/Entity-Relationship-Modell |
 | SQLite-Dokumentation (Englisch) | https://www.sqlite.org/lang.html |
